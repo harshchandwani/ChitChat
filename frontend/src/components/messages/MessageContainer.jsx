@@ -16,12 +16,11 @@ const MessageContainer = () => {
 		<div className='md:min-w-[450px] flex flex-col'>
 			{!selectedConversation ? <NoChatSelected /> : (
 				<>
-					{/* Header */}
-					<div className='bg-slate-700 px-6 py-3 flex'>
+					<div className='bg-gradient-to-t px-6 py-3 flex'>
 						<div className='w-10 rounded-full flex-col'>
 							<img alt='User pic' src={selectedConversation.profilepic} />
 						</div>
-						<span className='text-white font-bold text-xl text-center ml-3 mt-1'>{selectedConversation.fullName}</span>
+						<span className='text-white text-xl text-center ml-3 mt-1 bg-gradient-to-t text-transparent bg-clip-text from-pink-300 via-orange-400 to-purple-700 font-medium'>{selectedConversation.fullName}</span>
 					</div>
 
 					<Messages />

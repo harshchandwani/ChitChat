@@ -40,3 +40,12 @@
 .read-the-docs {
   color: #888;
 }
+
+.glass-effect{
+/* From https://css.glass */
+background: rgba(176, 175, 175, 0.13);
+border-radius: 2px;
+box-shadow: 0 4px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(6.5px);
+-webkit-backdrop-filter: blur(6.5px);
+}

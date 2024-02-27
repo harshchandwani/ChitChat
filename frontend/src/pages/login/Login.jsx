@@ -13,46 +13,56 @@ const Login = () => {
         await login(username, password);
     }
     return (
-        <div className='flex flex-col items-center justify-center min-w-96 mx-auto'>
-            <div className='w-full p-6 rounded-lg shadow-md  bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0'>
-                <h1 className='mb-4 text-4xl font-semibold text-center text-gray-300'>WhatsUp</h1>
-                <h1 className='text-3xl font-semibold text-center text-gray-300'>Login
-                </h1>
-                <form onSubmit={handleSubmit}>
-                    <div>
-                        <label className='label p-2'>
-                            <span className='text-base label-text'>Username</span>
-                        </label>
-                        <input
-                            type='text'
-                            placeholder='Enter Username'
-                            className='w-full input input-bordered h-10'
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                        ></input>
-                    </div>
-                    <div>
-                        <label className='label p-2'>
-                            <span className='text-base label-text'>Password</span>
-                        </label>
-                        <input
-                            type='password'
-                            placeholder='Enter Password'
-                            className='w-full input input-bordered h-10'
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        ></input>
+        <div className=" font-family-karla h-screen">
+            <div className="w-full flex flex-wrap">
+                <div className="w-full md:w-1/2 flex flex-col">
+                    <div className="flex justify-center md:justify-start pt-12 md:pl-12 md:-mb-12">
+                        <a href="#" className="text-5xl bg-gradient-to-t text-transparent bg-clip-text from-pink-300 via-orange-400 to-purple-700 p-4" alt="Logo">Chit Chat</a>
                     </div>
 
+                    <div className="flex flex-col justify-center md:justfy-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
+                        <p className="text-center text-3xl">Welcome Back</p>
+                        <form className="text-left flex flex-col pt-3 md:pt-8" onSubmit={handleSubmit}>
+                            <div className="flex flex-col pt-4">
+                                <label for="email" className="text-lg">Username</label>
+                                <input
+                                    type="text"
+                                    placeholder="your@email.com"
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 mt-1 leading-tight focus:outline-none focus:shadow-outline"
+                                    value={username}
+                                    onChange={(e) => setUsername(e.target.value)}
+                                />
+                            </div>
 
-                    <Link to={'/signup'} className='text-sm hover:underline hover:text-blue-600 mt-2 inline-block'>{"Dont"} have an account?
-                    </Link>
+                            <div className="flex flex-col pt-4">
+                                <label for="password" className="text-lg">Password</label>
+                                <input
+                                    type="password"
+                                    id="password"
+                                    placeholder="Password"
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 mt-1 leading-tight focus:outline-none focus:shadow-outline"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                />
+                            </div>
 
-                    <div>
-                        <button className='btn btn-block btn-sm mt-2'>Submit</button>
+                            <div className='flex flex-col pt-4 '>
+                                <button className='rounded-lg bg-gradient-to-t from-pink-300 via-orange-400 to-purple-700 text-black font-bold text-lg hover:bg-gray-700 p-2 mt-8'>Login</button>
+                            </div>
+
+                        </form>
+                        <div className="text-center pt-12 pb-12">
+                            <p>Don't have an account? <Link to={'/signup'} className="underline font-semibold">Sign up here.</Link></p>
+                        </div>
                     </div>
-                </form>
+
+                </div>
+                {/* IMage */}
+                <div className="w-1/2 bg-transparent">
+                    <img className="object-cover w-full h-screen hidden md:block" src="/bg-login.png" alt="Background" />
+                </div>
             </div>
+
         </div>
     )
 }
