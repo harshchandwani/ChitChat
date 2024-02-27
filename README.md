@@ -13,16 +13,18 @@ ChitChat is a full-stack chat application built using the MERN (MongoDB, Express
 
 
 ## Test Account
-- **Email:** test@example.com
+- **Email:** test
 - **Password:** test123
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+[screen-capture (2).webm](https://github.com/harshchandwani/ChitChat/assets/67815775/1c2203bf-7864-482e-b461-e5d0cb44b13b)
 
 
 ## Demo
+![Screenshot 2024-02-27 190908](https://github.com/harshchandwani/ChitChat/assets/67815775/6a00694e-a5b5-4731-8525-12c5004ae403)
 
-Insert gif or link to demo
+
+![Screenshot 2024-02-27 190854](https://github.com/harshchandwani/ChitChat/assets/67815775/77183ee4-0ee4-4ea2-9264-10f7bd36ea1e)
 
 
 ## Installation
@@ -73,7 +75,6 @@ npm start
 
 Contributions are always welcome!
 
-See `contributing.md` for ways to get started.
 
 Please adhere to this project's `code of conduct`.
 
