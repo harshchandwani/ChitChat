@@ -24,7 +24,7 @@ const Login = () => {
                         <p className="text-center text-3xl">Welcome Back</p>
                         <form className="text-left flex flex-col pt-3 md:pt-8" onSubmit={handleSubmit}>
                             <div className="flex flex-col pt-4">
-                                <label for="email" className="text-lg">Username</label>
+                                <label className="text-lg">Username</label>
                                 <input
                                     type="text"
                                     placeholder="your@email.com"
@@ -35,7 +35,7 @@ const Login = () => {
                             </div>
 
                             <div className="flex flex-col pt-4">
-                                <label for="password" className="text-lg">Password</label>
+                                <label className="text-lg">Password</label>
                                 <input
                                     type="password"
                                     id="password"

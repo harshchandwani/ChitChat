@@ -3,6 +3,15 @@ import GenderCheckbox from './GenderCheckbox'
 import { Link } from 'react-router-dom'
 import useSignup from "../../hooks/useSignup.js"
 import toast from 'react-hot-toast'
+import { z } from 'zod';
+// Define the schema using Zod
+const schema = z.object({
+    fullName: z.string().max(20),
+    username: z.string().max(10), // Assuming username is an email
+    password: z.string().min(8), // Password should be at least 8 characters
+    confirmPassword: z.string(),
+    gender: z.string().optional(),
+});
 const Signup = () => {
     const [inputs, setInputs] = useState({
         fullName: '',
@@ -15,12 +24,20 @@ const Signup = () => {
     const handleCheckboxChange = (gender) => {
         setInputs({ ...inputs, gender });
     }
-
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await signup(inputs);
+        try {
+            // Validate inputs against schema
+            schema.parse(inputs);
+            await signup(inputs);
+        } catch (error) {
+            // Handle validation errors
+            toast.error("Name should not exceed 20 char")
+            return;
 
+        }
     }
+
     return (
         <div className=" font-family-karla h-screen">
             <div className="w-full flex flex-wrap">
@@ -33,7 +50,7 @@ const Signup = () => {
                         <p className="text-center text-3xl">Join Us.</p>
                         <form className="text-left flex flex-col pt-3 md:pt-8" onSubmit={handleSubmit}>
                             <div className="flex flex-col pt-4">
-                                <label for="name" className="text-lg">Name</label>
+                                <label className="text-lg">Name</label>
                                 <input
                                     type="text"
                                     id="name"
@@ -45,11 +62,11 @@ const Signup = () => {
                             </div>
 
                             <div className="flex flex-col pt-4">
-                                <label for="email" className="text-lg">Username</label>
+                                <label className="text-lg">Username</label>
                                 <input
                                     type="text"
                                     id="email"
-                                    placeholder="your@email.com"
+                                    placeholder="Johnhehe"
                                     className="shadow appearance-none border rounded w-full py-2 px-3 mt-1 leading-tight focus:outline-none focus:shadow-outline"
                                     value={inputs.username}
                                     onChange={(e) => setInputs({ ...inputs, username: e.target.value })}
@@ -57,7 +74,7 @@ const Signup = () => {
                             </div>
 
                             <div className="flex flex-col pt-4">
-                                <label for="password" className="text-lg">Password</label>
+                                <label className="text-lg">Password</label>
                                 <input
                                     type="password"
                                     id="password"
@@ -69,7 +86,7 @@ const Signup = () => {
                             </div>
 
                             <div className="flex flex-col pt-4">
-                                <label for="confirm-password" className="text-lg">Confirm Password</label>
+                                <label className="text-lg">Confirm Password</label>
                                 <input
                                     type="password"
                                     id="confirm-password"
