@@ -2,16 +2,9 @@ import React, { useState } from 'react'
 import GenderCheckbox from './GenderCheckbox'
 import { Link } from 'react-router-dom'
 import useSignup from "../../hooks/useSignup.js"
-import toast from 'react-hot-toast'
-import { z } from 'zod';
+
 // Define the schema using Zod
-const schema = z.object({
-    fullName: z.string().max(20),
-    username: z.string().max(10), // Assuming username is an email
-    password: z.string().min(8), // Password should be at least 8 characters
-    confirmPassword: z.string(),
-    gender: z.string().optional(),
-});
+
 const Signup = () => {
     const [inputs, setInputs] = useState({
         fullName: '',
@@ -26,16 +19,7 @@ const Signup = () => {
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            // Validate inputs against schema
-            schema.parse(inputs);
-            await signup(inputs);
-        } catch (error) {
-            // Handle validation errors
-            toast.error("Name should not exceed 20 char")
-            return;
-
-        }
+        await signup(inputs);
     }
 
     return (
@@ -57,7 +41,12 @@ const Signup = () => {
                                     placeholder="John Smith"
                                     className="shadow appearance-none border rounded w-full py-2 px-3  mt-1 leading-tight focus:outline-none focus:shadow-outline"
                                     value={inputs.fullName}
-                                    onChange={(e) => setInputs({ ...inputs, fullName: e.target.value })}
+                                    onChange={(e) => {
+                                        const newValue = e.target.value;
+                                        if (newValue.length <= 16) {
+                                            setInputs({ ...inputs, fullName: newValue });
+                                        }
+                                    }}
                                 />
                             </div>
 
